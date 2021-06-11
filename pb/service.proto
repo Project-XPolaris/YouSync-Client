@@ -1,0 +1,29 @@
+syntax = "proto3";
+option    go_package = "/pb";
+service FileSync {
+  rpc CheckChunk (ChunkInfo) returns (CheckResult) {}
+  rpc SyncFileChunk(Chunk) returns (SyncChunkResult){}
+}
+message ChunkInfo {
+  uint64 index    = 1;
+  uint64 size     = 2;
+  uint64 offset   = 3;
+  string checkSum = 4;
+  string path     = 5;
+  uint64 folderId = 6;
+}
+message CheckResult {
+  bool success = 1;
+}
+
+message Chunk {
+  uint64 index    = 1;
+  uint64 size     = 2;
+  uint64 offset   = 3;
+  string path     = 4;
+  uint64 folderId = 5;
+  bytes  data     = 6;
+}
+message SyncChunkResult {
+  bool success = 1;
+}
