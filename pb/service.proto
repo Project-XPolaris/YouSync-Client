@@ -17,12 +17,13 @@ message CheckResult {
 }
 
 message Chunk {
-  uint64 index    = 1;
-  uint64 size     = 2;
-  uint64 offset   = 3;
-  string path     = 4;
-  uint64 folderId = 5;
-  bytes  data     = 6;
+  uint64 index     = 1;
+  uint64 size      = 2;
+  uint64 offset    = 3;
+  string path      = 4;
+  uint64 folderId  = 5;
+  bool   LastChunk = 6;
+  bytes  data      = 7;
 }
 message SyncChunkResult {
   bool success = 1;
